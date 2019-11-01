@@ -308,7 +308,7 @@ var intrpow = function intrpow(frac1, power) {
    if (typeof power != 'bigint') throw "All inputs must be of BigInt type!"
    var frac = frac1 // avoid accidental overwrites
    if (!power && !frac.nr && !frac.ni) throw "Cannot compute 0⁰!"
-   if (!power) return newFraction(0n, 1n, 0n, 1n) // exponentiation by 0
+   if (!power) return newFraction(1n, 1n, 0n, 1n) // exponentiation by 0
    if (power < 0n) frac = frac.rec()
    if (!frac.nr && !frac.ni) return newFraction(0n, 1n, 0n, 1n)
    if (power == 1n) return frac
