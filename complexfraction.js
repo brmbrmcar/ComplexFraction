@@ -41,15 +41,15 @@ var addfunctions = function addfunctions(object) {
    object.atan = function(count = 100n, prec = 1048576n) { return atan(object, count, prec) }
    object.asin = function(count = 100n, prec = 1048576n) { return asin(object, count, prec) }
    object.acos = function(count = 100n, prec = 1048576n) { return acos(object, count, prec) }
-   object.ln = function(count = 100n, prec = 1048576n) { return ln(object, count, prec) }
-   object.exp = function(count = 250n, prec = 1048576n) { return exp(object, count, prec) }
-   object.pow = function(nr, dr, ni, di, count = 250n, prec = 1048576n) { return pow(object, newFraction(nr, dr, ni, di), count, prec) }
-   object.sin = function(count = 250n, prec = 1048576n) { return sin(object, count, prec) }
-   object.cos = function(count = 250n, prec = 1048576n) { return cos(object, count, prec) }
-   object.tan = function(count = 250n, prec = 1048576n) { return tan(object, count, prec) }
-   object.sinh = function(count = 250n, prec = 1048576n) { return sinh(object, count, prec) }
-   object.cosh = function(count = 250n, prec = 1048576n) { return cosh(object, count, prec) }
-   object.tanh = function(count = 250n, prec = 1048576n) { return tanh(object, count, prec) }
+   object.ln = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return ln(object, count, prec) }
+   object.exp = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return exp(object, count, prec) }
+   object.pow = function(nr, dr, ni, di, count = 100n, prec = 340282366920938463463374607431768211456n) { return pow(object, newFraction(nr, dr, ni, di), count, prec) }
+   object.sin = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return sin(object, count, prec) }
+   object.cos = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return cos(object, count, prec) }
+   object.tan = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return tan(object, count, prec) }
+   object.sinh = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return sinh(object, count, prec) }
+   object.cosh = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return cosh(object, count, prec) }
+   object.tanh = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return tanh(object, count, prec) }
    object.asinh = function(count = 100n, prec = 1048576n) { return asinh(object, count, prec) }
    object.acosh = function(count = 100n, prec = 1048576n) { return acosh(object, count, prec) }
    object.atanh = function(count = 100n, prec = 1048576n) { return atanh(object, count, prec) }
@@ -86,6 +86,7 @@ var newFractionM = function newFractionM(nm, dm, na, da, count = 250n, prec = 10
 }
 
 const pi = newFraction(66042797939237166593884738204157484089092316293360698857652736037180939496165955732022219028922303238278884350880930977738444480894204885073561133915852158762830955124503109884186732012071604231944097603126153436186816088678459979947158713265064200606216578194272934874913747158097580421842542309478496565496574774618010335406253731527294915764547198225734744777621607640106726773243024074961092805891107390790210126829373542596789478673443466915628973990351283389391922106351340639443903889729623328257566841975550019620200727459833280683912644949302621889238802339325596769136973744116289502043505819722622377975890675117168392044558499523988711861596389462574949055866240562477556182349897925000201350526107117273462862598585161964429979743100535843309505047201705911357841120209245549160948075617628939659716059304747459837276230748755184483305341308784651604771848817664889338382560215433058318123407199996983022092056781767918785082337669650565803768749635731843541250633558028822852739358511583n, 21022075495297667614751928455960893690002438624272829115943839442806697504563795810911475838925470847093888365073324129408307927215659038831381730042108594316069968993921710440066615373648013489084747192164702790165341729959309681053742435982348771802000052373069440771396425769052441514403521407536728128889781028801132578826022062769352911176463634450170163296745842783117938980939247969435740743001570797837710407965981817426675496744371408847255540644683853435409907956707419528276220597673982859710791069009098407760090115938669912137943834639403188507830370601269798039898169080981489165239144575694919684542547605895094295783643386486022949610288499640395373040658654793126647779511115211120505631892026006581024605674375718403810353971988226672991384150071118735359260805836448334210284378550299021477624961784815505849836613829000945773667835109750063160924999729813089918945408968987807443139072657540797083733008610554369282190595406709387044689284121274412920058465067984094788550926532608n, 0n, 1n)
+const e = newFraction(57143925815361832921464921497745850770273917170204169075750403908174304050591752560620917322159184511976798657353452084307059294388622554939943435029247083631981926281185555491427674426789065131627292676278826865013479208691152601453245405506012509586567529941001893423250421411827639784134188711798507628163815919595145850760111416005168076384047485518364245613145204147234562868359676985473949533471299959517828486360139446224416313370092374473744655864849123329220560221398272323543159392392376324450601232692467140870188797250552207403097547275241187654060657433854012443407062009462813284454135168210636468277425475822313157838545143794899783640288104937503008632443421974095522211341481511092793610441590444083318453545197083610892714512240875926367311053730536703344620629351135403949271055969080373558710697451123294510583907646521362922731516878390233010579486860573451952518126638952851694938764156512599909676761144743314801555374207709564875677507678953041294511490279413722169121709655601n,  21022075495297667614751928455960893690002438624272829115943839442806697504563795810911475838925470847093888365073324129408307927215659038831381730042108594316069968993921710440066615373648013489084747192164702790165341729959309681053742435982348771802000052373069440771396425769052441514403521407536728128889781028801132578826022062769352911176463634450170163296745842783117938980939247969435740743001570797837710407965981817426675496744371408847255540644683853435409907956707419528276220597673982859710791069009098407760090115938669912137943834639403188507830370601269798039898169080981489165239144575694919684542547605895094295783643386486022949610288499640395373040658654793126647779511115211120505631892026006581024605674375718403810353971988226672991384150071118735359260805836448334210284378550299021477624961784815505849836613829000945773667835109750063160924999729813089918945408968987807443139072657540797083733008610554369282190595406709387044689284121274412920058465067984094788550926532608n, 0n, 1n)
 
 var sim = function sim(frac) {
    var reals = simplify(frac.nr, frac.dr)
@@ -322,7 +323,7 @@ var intrpow = function intrpow(frac1, power) {
 
 var sqrt = function sqrt(frac1, prec) {
    var frac = frac1
-   if (!frac.ni && ! frac.nr) return frac // division by zero otherwise
+   if (!frac.ni && !frac.nr) return frac // division by zero otherwise
    if (frac.ni) var seed = newFraction(2n, 1n, 2n, 1n)
    else var seed = frac.sr ? newFraction(0n, 1n, 2n, 1n) : newFraction(2n, 1n, 0n, 1n)
    var a = seed.sub(newFraction(seed.intrpow(2n).sub(frac)).div(seed.add(seed))).rou(prec)
@@ -338,7 +339,7 @@ var sqrt = function sqrt(frac1, prec) {
 
 var cbrt = function cbrt(frac1, prec) {
    var frac = frac1
-   if (!frac.ni && ! frac.nr) return frac
+   if (!frac.ni && !frac.nr) return frac
    if (frac.ni) var seed = newFraction(2n, 1n, 2n, 1n)
    else var seed = newFraction(2n, 1n, 0n, 1n)
    var a = seed.sub(newFraction(seed.intrpow(3n).sub(frac)).div(seed.mul(seed).mul(3n, 1n, 0n, 1n))).rou(prec)
@@ -410,20 +411,20 @@ var ln = function ln(frac1, count, prec) {
       }
       realp.sr = false
       while (comparereal(realp.nr, realp.dr, 2n, 1n)) {
-	if (!ln2) ln2 = newFraction(2n, 1n, 0n, 1n).ln(count, prec).sim()
+	if (!ln2) ln2 = newFraction(2n, 1n, 0n, 1n).ln(count, prec**2n).sim()
 	if (torec) imap = imap.sub(ln2)
 	else imap = imap.add(ln2)
-	realp = realp.mul(1n, 2n, 0n, 1n).rou(prec)
+	realp = realp.mul(1n, 2n, 0n, 1n) //.rou(prec)
       }
       realp = realp.sub(1n, 1n, 0n, 1n).div(realp.add(1n, 1n, 0n, 1n)).sim()
       var n = 0n
-      var realp2 = realp.intrpow(2n).rou(prec)
+      var realp2 = realp.intrpow(2n) //.rou(prec)
       out = out.add(realp)
       while (n < count) {
 	n += 1n
 	realp = realp.mul(realp2).rou(prec)
 	realp.dr *= 2n*n+1n
-	out = out.add(realp).rou(prec)
+	out = out.add(realp) //.rou(prec)
       }
       if (torec) out.sr = true
       realp = out.mul(2n, 1n, 0n, 1n)
@@ -433,7 +434,8 @@ var ln = function ln(frac1, count, prec) {
 
 var exp = function exp(frac1, count, prec) {
    var frac = frac1
-   var exp2 = false
+   //var exp2 = false
+   var tempe = false
    var pi2 = false
    var out = newFraction(1n, 1n, 0n, 1n)
    var out1 = newFraction(1n, 1n, 0n, 1n)
@@ -444,10 +446,11 @@ var exp = function exp(frac1, count, prec) {
 	else frac = frac.sub(pi2)
       }
    }
-   while (!comparereal(3n, 1n, frac.nr, frac.dr)) {
-      if (!exp2) exp2 = frac.sr ? newFraction(2n, 1n, 0n, 1n).exp(count, prec).rec() : newFraction(2n, 1n, 0n, 1n).exp(count, prec)
-      out = out.mul(exp2)
-      frac = frac.sr ? frac.add(2n, 1n, 0n, 1n) : frac.sub(2n, 1n, 0n, 1n)
+   while (!comparereal(1n, 1n, frac.nr, frac.dr)) {
+      //if (!exp2) exp2 = frac.sr ? newFraction(2n, 1n, 0n, 1n).exp(count, prec).rec() : newFraction(2n, 1n, 0n, 1n).exp(count, prec)
+      var tempe = tempe ? tempe : e //.rou(prec)
+      out = out.mul(tempe).rou(prec**2n)
+      frac = frac.sr ? frac.add(1n, 1n, 0n, 1n) : frac.sub(1n, 1n, 0n, 1n)
    }
    var num = newFraction(1n, 1n, 0n, 1n)
    var den = 1n
@@ -459,7 +462,7 @@ var exp = function exp(frac1, count, prec) {
       out1 = out1.add(num.div(den, 1n, 0n, 1n))
    }
    out = out1.mul(out)
-   return out.rou(prec)
+   return out //.rou(prec)
 }
 
 var pow = function pow(frac1, frac2, count, prec) {
@@ -475,33 +478,33 @@ var acos = function acos(frac, count, prec) {
 }
 
 var sin = function sin(frac, count, prec) {
-   var expt = frac.mul(0n, 1n, 1n, 1n).exp(count, prec)
+   var expt = frac.mul(0n, 1n, 1n, 1n).exp(count, prec).rou(prec)
    return expt.sub(expt.rec()).mul(0n, 1n, -1n, 2n).rou(prec)
 }
 
 var cos = function cos(frac, count, prec) {
-   var expt = frac.mul(0n, 1n, 1n, 1n).exp(count, prec)
+   var expt = frac.mul(0n, 1n, 1n, 1n).exp(count, prec).rou(prec)
    return expt.add(expt.rec()).mul(1n, 2n, 0n, 1n).rou(prec)
 }
 
 var tan = function tan(frac, count, prec) {
-   var expt = frac.mul(0n, 1n, 1n, 1n).exp(count, prec)
+   var expt = frac.mul(0n, 1n, 1n, 1n).exp(count, prec).rou(prec)
    var exptr = expt.rec()
    return expt.sub(exptr).div(expt.add(exptr)).mul(0n, 1n, -1n, 1n).rou(prec)
 }
 
 var sinh = function sinh(frac, count, prec) {
-   var expt = frac.exp(count, prec)
+   var expt = frac.exp(count, prec).rou(prec)
    return expt.sub(expt.rec()).mul(1n, 2n, 0n, 1n).rou(prec)
 }
 
 var cosh = function cosh(frac, count, prec) {
-   var expt = frac.exp(count, prec)
+   var expt = frac.exp(count, prec).rou(prec)
    return expt.add(expt.rec()).mul(1n, 2n, 0n, 1n).rou(prec)
 }
 
 var tanh = function cosh(frac, count, prec) {
-   var expt = frac.mul(2n, 1n, 0n, 1n).exp(count, prec)
+   var expt = frac.mul(2n, 1n, 0n, 1n).exp(count, prec).rou(prec)
    return expt.sub(1n, 1n, 0n, 1n).div(expt.add(1n, 1n, 0n, 1n)).rou(prec)
 }
 
