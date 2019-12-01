@@ -83,15 +83,15 @@ Absolute value:
 
 Argument:
 
-.arg(iterations = 100n, maximum denominator = 1048576n)
+.arg(iterations = 100n, maximum denominator = 340282366920938463463374607431768211456n)
 
 Natural logarithm:
 
-.ln(iterations = 100n, maximum denominator = 1048576n)
+.ln(iterations = 100n, maximum denominator = 340282366920938463463374607431768211456n)
 
 Exponential function (eˣ):
 
-.exp(iterations = 250n, maximum denominator = 1048576n)
+.exp(iterations = 250n, maximum denominator = 340282366920938463463374607431768211456n)
 
 Exponentiate:
 
@@ -111,15 +111,15 @@ Tangent:
 
 Inverse sine:
 
-.asin(iterations = 100n, maximum denominator = 1048576n)
+.asin(iterations = 100n, maximum denominator = 340282366920938463463374607431768211456n)
 
 Inverse cosine:
 
-.acos(iterations = 100n, maximum denominator = 1048576n)
+.acos(iterations = 100n, maximum denominator = 340282366920938463463374607431768211456n)
 
 Inverse tangent:
 
-.atan(iterations = 100n, maximum denominator = 1048576n)
+.atan(iterations = 100n, maximum denominator = 340282366920938463463374607431768211456n)
 
 Hyperbolic sine:
 
@@ -135,12 +135,12 @@ Hyperbolic tangent:
 
 Inverse hyperbolic sine:
 
-.asinh(iterations = 100n, maximum denominator = 1048576n)
+.asinh(iterations = 100n, maximum denominator = 340282366920938463463374607431768211456n)
 
 Inverse hyperbolic cosine:
 
-.acosh(iterations = 100n, maximum denominator = 1048576n)
+.acosh(iterations = 100n, maximum denominator = 340282366920938463463374607431768211456n)
 
 Inverse hyperbolic tangent:
 
-.atanh(iterations = 100n, maximum denominator = 1048576n)
+.atanh(iterations = 100n, maximum denominator = 340282366920938463463374607431768211456n)
