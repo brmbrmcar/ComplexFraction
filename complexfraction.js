@@ -365,7 +365,7 @@ var atan = function atan(frac1, count, prec) {
      return newFraction(0n, 1n, 1n, 1n).sub(frac).div(frac.add(0n, 1n, 1n, 1n)).ln(count, prec).mul(0n, 1n, -1n, 2n)
    }
    if (!frac.ni && !frac.nr) return frac // atan(0) = 0
-   if ((frac.nr == frac.ni && frac.dr == frac.di) || frac.ni > frac.di || comparereal(frac.nr, frac.dr, 2n, 1n)) { // fix non-convergence issues
+   if (comparereal(frac.nr, frac.dr, 2n, 1n)) { // fix non-convergence issues
      frac = frac.div(newFraction(1n, 1n, 0n, 1n).add(newFraction(1n, 1n, 0n, 1n).add(frac.intrpow(2n)).sqrt(prec)))
      return frac.atan(count, prec).mul(2n, 1n, 0n, 1n)
    }
