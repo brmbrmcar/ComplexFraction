@@ -33,14 +33,14 @@ var addfunctions = function addfunctions(object) {
    object.sim = function() { return sim(object) }
    object.div = function(nr, dr, ni, di) { return mul(object, newFraction(nr, dr, ni, di).rec()) }
    object.abs = function(prec = 340282366920938463463374607431768211456n) { return abs(object, prec) }
-   object.arg = function(count = 100n, prec = 1048576n) { return arg(object, count, prec) }
+   object.arg = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return arg(object, count, prec) }
    object.intrpow = function(r) { return intrpow(object, r) }
    object.rou = function(prec = 340282366920938463463374607431768211456n) { return rou(object, prec) } // default = 2¹²⁸
    object.sqrt = function(prec = 340282366920938463463374607431768211456n) { return sqrt(object, prec) }
    object.cbrt = function(prec = 340282366920938463463374607431768211456n) { return cbrt(object, prec) }
-   object.atan = function(count = 100n, prec = 1048576n) { return atan(object, count, prec) }
-   object.asin = function(count = 100n, prec = 1048576n) { return asin(object, count, prec) }
-   object.acos = function(count = 100n, prec = 1048576n) { return acos(object, count, prec) }
+   object.atan = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return atan(object, count, prec) }
+   object.asin = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return asin(object, count, prec) }
+   object.acos = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return acos(object, count, prec) }
    object.ln = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return ln(object, count, prec) }
    object.exp = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return exp(object, count, prec) }
    object.pow = function(nr, dr, ni, di, count = 100n, prec = 340282366920938463463374607431768211456n) { return pow(object, newFraction(nr, dr, ni, di), count, prec) }
@@ -50,9 +50,9 @@ var addfunctions = function addfunctions(object) {
    object.sinh = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return sinh(object, count, prec) }
    object.cosh = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return cosh(object, count, prec) }
    object.tanh = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return tanh(object, count, prec) }
-   object.asinh = function(count = 100n, prec = 1048576n) { return asinh(object, count, prec) }
-   object.acosh = function(count = 100n, prec = 1048576n) { return acosh(object, count, prec) }
-   object.atanh = function(count = 100n, prec = 1048576n) { return atanh(object, count, prec) }
+   object.asinh = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return asinh(object, count, prec) }
+   object.acosh = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return acosh(object, count, prec) }
+   object.atanh = function(count = 100n, prec = 340282366920938463463374607431768211456n) { return atanh(object, count, prec) }
    return object
 }
 
@@ -356,20 +356,18 @@ var cbrt = function cbrt(frac1, prec) {
 var atan = function atan(frac1, count, prec) {
    var frac = frac1
    frac = frac.sim()
+   if (frac.ni) {
+     if (!frac.nr) { 
+	var out = newFraction(0n, 1n, 1n, 1n).sub(frac).div(frac.add(0n, 1n, 1n, 1n)).ln(count, prec).mul(0n, 1n, -1n, 2n)
+	out.sr = out.si
+	return out
+     }
+     return newFraction(0n, 1n, 1n, 1n).sub(frac).div(frac.add(0n, 1n, 1n, 1n)).ln(count, prec).mul(0n, 1n, -1n, 2n)
+   }
    if (!frac.ni && !frac.nr) return frac // atan(0) = 0
-   if ((frac.nr == frac.ni && frac.dr == frac.di) || frac.ni > frac.di) { // fix non-convergence issues
+   if ((frac.nr == frac.ni && frac.dr == frac.di) || frac.ni > frac.di || comparereal(frac.nr, frac.dr, 2n, 1n)) { // fix non-convergence issues
      frac = frac.div(newFraction(1n, 1n, 0n, 1n).add(newFraction(1n, 1n, 0n, 1n).add(frac.intrpow(2n)).sqrt(prec)))
      return frac.atan(count, prec).mul(2n, 1n, 0n, 1n)
-   }
-   if (!frac.nr) {
-     var output = newFraction(0n, 1n, 1n, 1n).sub(frac).div(frac.add(0n, 1n, 1n, 1n)).ln(count, prec).mul(0n, 1n, -1n, 2n)
-     if (comparereal(1n, 1n, frac.ni, frac.di)) {
-	output.nr = 0n
-	output.dr = 0n
-	return output
-     }
-     else if (frac.si) return output.sub(pi.rou(prec).mul(1n, 2n, 0n, 1n))
-     else return output.add(pi.rou(prec).mul(1n, 2n, 0n, 1n))
    }
    var n = 1n
    var i2z = newFraction(0n, 1n, 2n, 1n).div(frac).rou(prec) // 2i/frac
@@ -423,8 +421,10 @@ var ln = function ln(frac1, count, prec) {
       while (n < count) {
 	n += 1n
 	realp = realp.mul(realp2).rou(prec)
+	const tempr = realp.dr 
 	realp.dr *= 2n*n+1n
 	out = out.add(realp) //.rou(prec)
+	realp.dr = tempr
       }
       if (torec) out.sr = true
       realp = out.mul(2n, 1n, 0n, 1n)
@@ -474,7 +474,7 @@ var asin = function asin(frac, count, prec) {
 }
 
 var acos = function acos(frac, count, prec) {
-   return pi.rou(prec).mul(1n, 2n, 0n, 1n).sub(frac.asin(frac, count, prec))
+   return frac.add(newFraction(-1n, 1n, 0n, 1n).add(frac.intrpow(2n)).sqrt(prec)).ln(count, prec).mul(0n, 1n, -1n, 1n)
 }
 
 var sin = function sin(frac, count, prec) {
