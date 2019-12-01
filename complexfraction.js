@@ -81,7 +81,7 @@ var newFraction = function newFraction(nr, dr, ni, di) {
    return outobj
 }
 
-var newFractionM = function newFractionM(nm, dm, na, da, count = 250n, prec = 1048576n) {
+var newFractionM = function newFractionM(nm, dm, na, da, count = 100n, prec = 340282366920938463463374607431768211456n) {
    return newFraction(0n, 1n, na, da).exp(count, prec).mul(nm, dm, 0n, 1n)
 }
 
