@@ -311,14 +311,11 @@ var intrpow = function intrpow(frac1, power) {
    if (!power && !frac.nr && !frac.ni) throw "Cannot compute 0⁰!"
    if (!power) return newFraction(1n, 1n, 0n, 1n) // exponentiation by 0
    if (power < 0n) frac = frac.rec()
+   if (power < 0n) power = -power
    if (!frac.nr && !frac.ni) return newFraction(0n, 1n, 0n, 1n)
    if (power == 1n) return frac
-   power = power < 0n ? -power : power
-   var frace = frac
-   for (var count = 1n; count < power; count++) {
-      frace = frace.mul(frac)
-   }
-   return frace
+   if (power % 2n == 0n) return frac.mul(frac).intrpow(power/2n)
+   else return frac.mul(frac.mul(frac).intrpow(power/2n))
 }
 
 var sqrt = function sqrt(frac1, prec) {
