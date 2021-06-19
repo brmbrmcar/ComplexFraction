@@ -24,4 +24,4 @@ frSqrt x a = if inum x == 0
    else frSqrt2 x a (1,1,-1,1)
 frSqrt2 x a s = if rnum (frSubtract (frAbs2 a) (frAbs2 (frSubtract (frMultiply s s) x))) > 0
    then s
-   else frSqrt2 x a (frSubtract s (frDivide (frSubtract (frMultiply s s) (x)) (frAdd s s)))
+   else frSqrt2 x a (simplify (frSubtract s (frDivide (frSubtract (frMultiply s s) (x)) (frAdd s s))))
